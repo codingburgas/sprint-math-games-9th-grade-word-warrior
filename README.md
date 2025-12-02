@@ -18,10 +18,14 @@
    <a href="https://www.microsoft.com/en-ww/microsoft-365/word"><img src="Pictures\Microsoft_Office_Word_(2019–2025).svg.png" alt="MS Word logo" width=50px></a>
    <a href="https://www.microsoft.com/en-us/microsoft-365/powerpoint"><img src="Pictures\Microsoft_PowerPoint-Logo.wine.svg" alt="MS PowerPoint logo" width=90px>
    <a href="https://visualstudio.microsoft.com/"><img src="Pictures\Visual Studio.jpg" alt="Visual Studio logo" width=42px/></a>
-   <a href="https://git-scm.com/"><img src="Pictures\GitHub.png" alt="GitHub" heigh=48px width=70px></a>
+   <a href="https://github.com/"><img src="Pictures\GitHub.png" alt="GitHub" heigh=48px width=70px></a>
    <a href="https://teams.microsoft.com/_?culture=en-us&country=us#/conversations/19:b01cf915e57b430ea93ab780c4f6b6dc@thread.v2?ctx=chat"><img src="Pictures\Teams.jpg" alt="Teams logo" width=70px></a>
  <br>
-  
+
+ <h2 align="left">📄 Documents</h2><br>
+  <ul>
+    <li><a href="Word Warriors.pptx">Presentation</a></li>
+  </ul>  
  
 <h2 align="left">👨🏻💻 Team Members </h2>
 <table >
@@ -45,7 +49,7 @@
   </tr>
   <tr>
     <td align="center">Yordan Raynov</td>
-    <td align="center">HTML developer</td>
+    <td align="center">FrontEnd Developer </td>
     <td align="center">🟥 9B</td>
     <td align="center"> <a href="https://github.com/YRRaynov24">YRRaynov24 </a></td>
   </tr>
