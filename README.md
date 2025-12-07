@@ -24,7 +24,7 @@
 
  <h2 align="left">📄 Documents</h2><br>
   <ul>
-    <li><a href="Word Warriors.pptx">Presentation</a></li>
+    <li><a href="Documentation/Word Warriors.pptx">Presentation</a></li>
   </ul>  
  
 <h2 align="left">👨🏻💻 Team Members </h2>
@@ -36,7 +36,7 @@
     <td align="center">Github</td>
   </tr>
   <tr>
-    <td align="center"> Mikhail Mavrodiev</td>
+    <td align="center"> Mihail Mavrodiev</td>
     <td align="center">Scrum trainer</td>
     <td align="center">🟦 9G</td>
     <td align="center"> <a href="https://github.com/MHMavrodiev24">MHMavrodiev24  </a></td>
@@ -54,7 +54,7 @@
     <td align="center"> <a href="https://github.com/YRRaynov24">YRRaynov24 </a></td>
   </tr>
   <tr>
-    <td align="center">Yoan-Aleksandur Georgiev</td>
+    <td align="center">Ioan-Aleksandur Georgiev</td>
     <td align="center">Designer</td>
     <td align="center">🟨 9A</td>
     <td align="center"> <a href="https://github.com/IEGeorgiev24">IEGeorgiev24 </a></td>

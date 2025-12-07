@@ -1,0 +1,11 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Word Warrior.vcxproj" Id="4b9af1d5-e908-41d9-bcb3-49c4fe55414f" />
+  <Properties>
+    <Property Name="TrackFileAccess">true</Property>
+    <Property Name="ShowAllFiles">true</Property>
+  </Properties>
+</Solution>

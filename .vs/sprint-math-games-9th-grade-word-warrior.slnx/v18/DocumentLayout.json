@@ -1,10 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\MSI\\source\\repos\\sprint-math-games-9th-grade-word-warrior\\",
+  "WorkspaceRootPath": "C:\\sprint-math-games-9th-grade-word-warrior\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\MSI\\source\\repos\\sprint-math-games-9th-grade-word-warrior\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\sprint-math-games-9th-grade-word-warrior\\Word Warrior\\Word Warrior.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Word Warrior\\Word Warrior.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "README.md",
-              "DocumentMoniker": "C:\\Users\\MSI\\source\\repos\\sprint-math-games-9th-grade-word-warrior\\README.md",
-              "RelativeDocumentMoniker": "README.md",
-              "ToolTip": "C:\\Users\\MSI\\source\\repos\\sprint-math-games-9th-grade-word-warrior\\README.md",
-              "RelativeToolTip": "README.md",
+              "Title": "Word Warrior.cpp",
+              "DocumentMoniker": "C:\\sprint-math-games-9th-grade-word-warrior\\Word Warrior\\Word Warrior.cpp",
+              "RelativeDocumentMoniker": "Word Warrior\\Word Warrior.cpp",
+              "ToolTip": "C:\\sprint-math-games-9th-grade-word-warrior\\Word Warrior\\Word Warrior.cpp",
+              "RelativeToolTip": "Word Warrior\\Word Warrior.cpp",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
-              "WhenOpened": "2025-12-02T19:27:59.256Z",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-12-07T18:31:04.326Z",
               "EditorCaption": ""
             }
           ]
