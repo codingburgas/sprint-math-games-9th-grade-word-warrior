@@ -16,7 +16,6 @@ void displayLeaderboard(Player leaderboard[], int playerCount) {
         }
         else {
             sortLeaderboard(leaderboard, playerCount);
-
             cout << "Rank\tName\t\tScore\n";
             cout << "---------------------------------\n";
             for (int i = 0; i < playerCount; i++) {
@@ -28,7 +27,6 @@ void displayLeaderboard(Player leaderboard[], int playerCount) {
         cout << "1. Back to Main Menu\n";
         int choice;
         cout << "\nEnter choice: ";
-
         while (!(cin >> choice) || choice != 1) {
             cout << "Invalid choice. Enter 1 to return: ";
             clearInputBuffer();
@@ -54,29 +52,18 @@ void displaySettingsMenu(Settings& settings) {
 
         int choice;
         cout << "\nEnter choice (1-6): ";
-
         while (!(cin >> choice) || choice < 1 || choice > 6) {
-            cout << "Invalid choice. Enter 1-6: ";
             clearInputBuffer();
         }
         clearInputBuffer();
 
         switch (choice) {
-        case 1:
-            settings.soundEnabled = !settings.soundEnabled;
-            saveSettings(settings);
-            break;
-        case 2:
-            settings.musicEnabled = !settings.musicEnabled;
-            saveSettings(settings);
-            break;
+        case 1: settings.soundEnabled = !settings.soundEnabled; saveSettings(settings); break;
+        case 2: settings.musicEnabled = !settings.musicEnabled; saveSettings(settings); break;
         case 3: {
             int newVolume;
             cout << "\nEnter volume (0-100): ";
-            while (!(cin >> newVolume) || newVolume < 0 || newVolume > 100) {
-                cout << "Invalid input. 0-100: ";
-                clearInputBuffer();
-            }
+            while (!(cin >> newVolume) || newVolume < 0 || newVolume > 100) { clearInputBuffer(); }
             clearInputBuffer();
             settings.volume = newVolume;
             saveSettings(settings);
@@ -100,8 +87,7 @@ void displaySettingsMenu(Settings& settings) {
             saveSettings(settings);
             cout << "Reset complete.\n"; cin.get();
             break;
-        case 6:
-            return;
+        case 6: return;
         }
     }
 }
@@ -112,19 +98,21 @@ void startGame(Player leaderboard[], int& playerCount, const string& playerName)
         cout << "=================================\n";
         cout << "         SELECT DIFFICULTY\n";
         cout << "=================================\n\n";
-        cout << "1. Easy (Word Guess)\n";
-        cout << "2. Normal (Soon)\n";
-        cout << "3. Hard (Soon)\n";
+        cout << "1. Easy   (3 Letters, 3 Tries)\n";
+        cout << "2. Normal (5 Letters, 5 Tries)\n";
+        cout << "3. Hard   (Soon)\n";
         cout << "4. Back\n";
         cout << "\nSelect: ";
 
         int choice;
-        if (!(cin >> choice)) {
-            clearInputBuffer(); continue;
-        }
+        if (!(cin >> choice)) { clearInputBuffer(); continue; }
 
         if (choice == 1) {
             playEasyMode(leaderboard, playerCount, playerName);
+            return;
+        }
+        else if (choice == 2) {
+            playNormalMode(leaderboard, playerCount, playerName);
             return;
         }
         else if (choice == 4) return;
@@ -158,7 +146,6 @@ int main() {
     loadLeaderboard(leaderboard, playerCount);
     loadSettings(settings);
 
-
     clearScreen();
     showLogo();
     cout << "Enter your name: ";
@@ -178,9 +165,7 @@ int main() {
         cout << "\nOption: ";
 
         int choice;
-        if (!(cin >> choice)) {
-            clearInputBuffer(); continue;
-        }
+        if (!(cin >> choice)) { clearInputBuffer(); continue; }
         clearInputBuffer();
 
         switch (choice) {
