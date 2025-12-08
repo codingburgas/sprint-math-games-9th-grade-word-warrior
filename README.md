@@ -24,7 +24,8 @@
 
  <h2 align="left">📄 Documents</h2><br>
   <ul>
-    <li><a href="Documentation/Word Warriors.pptx">Presentation</a></li>
+    <li><a href="Documentation/WordWarriors.pptx">Presentation</a></li>
+    <li><a href="Documentation/Wordwarrior documentation.docx">Documentation</a></li>
   </ul>  
  
 <h2 align="left">👨🏻💻 Team Members </h2>

@@ -1,8 +1,11 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\Word Warrior"
+    ""
   ],
+<<<<<<< HEAD
   "SelectedNode": "\\Word Warrior\\Word Warrior.slnx",
+=======
+  "SelectedNode": "\\Word Warrior.slnx",
+>>>>>>> 2cf8772cf944e03febbfb3e93d854f9e1b51e320
   "PreviewInSolutionExplorer": false
 }
