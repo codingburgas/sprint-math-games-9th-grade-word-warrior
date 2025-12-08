@@ -67,6 +67,7 @@ void saveLeaderboard(Player leaderboard[], int playerCount) {
 void loadSettings(Settings& settings) {
     ifstream file(SETTINGS_FILE);
 
+    // Default settings
     settings.soundEnabled = true;
     settings.musicEnabled = true;
     settings.volume = 50;
