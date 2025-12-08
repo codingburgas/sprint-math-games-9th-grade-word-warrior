@@ -1,12 +1,17 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <conio.h>
-#include <windows.h>
+#include <limits>
+#include <algorithm> 
+
 using namespace std;
 
+
+void clearScreen() {
+    system("cls");
+}
+
 void displayMenu() {
-    // Game title
     cout << R"TITLE(
  __          __           _  __          __             _            
  \ \        / /          | | \ \        / /            (_)           
@@ -19,15 +24,18 @@ void displayMenu() {
     cout << "\n";
     cout << "=========================================\n\n";
 }
+
 struct Player {
     string name;
     int score;
 };
 
 const int MAX_PLAYERS = 10;
+const string FILENAME = "leaderboard.txt";
 
-void loadLeaderboard(Player leaderboard[], int& playerCount, const string& filename) {
-    ifstream file(filename);
+
+void loadLeaderboard(Player leaderboard[], int& playerCount) {
+    ifstream file(FILENAME);
     playerCount = 0;
 
     if (file.is_open()) {
@@ -38,8 +46,8 @@ void loadLeaderboard(Player leaderboard[], int& playerCount, const string& filen
     }
 }
 
-void saveLeaderboard(Player leaderboard[], int playerCount, const string& filename) {
-    ofstream file(filename);
+void saveLeaderboard(Player leaderboard[], int playerCount) {
+    ofstream file(FILENAME);
 
     if (file.is_open()) {
         for (int i = 0; i < playerCount; i++) {
@@ -62,7 +70,7 @@ void sortLeaderboard(Player leaderboard[], int playerCount) {
 }
 
 void displayLeaderboard(Player leaderboard[], int playerCount) {
-    system("cls");
+    clearScreen();
     cout << "=================================\n";
     cout << "         LEADERBOARD\n";
     cout << "=================================\n\n";
@@ -81,15 +89,17 @@ void displayLeaderboard(Player leaderboard[], int playerCount) {
         cout << "\n";
     }
 
-    cout << "Press any key to return to menu...";
-    _getch();
+    cout << "Press ENTER to return to menu...";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin.get();
 }
 
 void addScore(Player leaderboard[], int& playerCount) {
     if (playerCount >= MAX_PLAYERS) {
         cout << "Leaderboard is full! Cannot add more scores.\n";
-        cout << "Press any key to continue...";
-        _getch();
+        cout << "Press ENTER to continue...";
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cin.get();
         return;
     }
 
@@ -98,76 +108,127 @@ void addScore(Player leaderboard[], int& playerCount) {
 
     cout << "Enter player name: ";
     cin >> name;
+
     cout << "Enter score: ";
-    cin >> score;
+    while (!(cin >> score)) {
+        cout << "Invalid input. Please enter an integer for the score: ";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
     leaderboard[playerCount].name = name;
     leaderboard[playerCount].score = score;
     playerCount++;
 
     cout << "\nScore added successfully!\n";
-    cout << "Press any key to continue...";
-    _getch();
+    cout << "Press ENTER to continue...";
+    cin.get();
+}
+
+void startGame(Player leaderboard[], int& playerCount) {
+    clearScreen();
+    cout << "=================================\n";
+    cout << "         SELECT DIFFICULTY\n";
+    cout << "=================================\n\n";
+
+    cout << "1. Easy\n";
+    cout << "2. Normal\n";
+    cout << "3. Hard\n";
+    cout << "4. Back to Menu\n";
+
+    int choice;
+    cout << "\nEnter choice (1-4): ";
+
+    while (!(cin >> choice) || choice < 1 || choice > 4) {
+        cout << "Invalid choice. Enter a number from 1 to 4: ";
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    }
+
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+    if (choice == 4) {
+        return;
+    }
+
+    string difficulty;
+    switch (choice) {
+    case 1: difficulty = "Easy"; break;
+    case 2: difficulty = "Normal"; break;
+    case 3: difficulty = "Hard"; break;
+    }
+
+    clearScreen();
+    cout << "Starting game on **" << difficulty << "** difficulty..." << endl;
+    cout << "\n[Game simulation - adding a score]\n\n";
+
+    addScore(leaderboard, playerCount);
+    saveLeaderboard(leaderboard, playerCount);
 }
 
 void printMenu(int selected) {
-    string options[4] = { "Start Game", "Leaderboard", "Settings", "Exit" };
+    string options[4] = { "1. Start Game", "2. Leaderboard", "3. Settings", "4. Exit" };
     for (int i = 0; i < 4; i++) {
         if (i == selected) {
-            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), BACKGROUND_BLUE | FOREGROUND_INTENSITY | FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
-            cout << "> " << options[i] << endl;
-            SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE);
+            cout << ">> " << "**" << options[i] << "**" << " << \n";
         }
         else {
-            cout << "  " << options[i] << endl;
+            cout << "   " << options[i] << " \n";
         }
     }
 }
 
 int main() {
     int selected = 0;
-    int key;
+    int choice;
     Player leaderboard[MAX_PLAYERS];
     int playerCount = 0;
-    const string filename = "leaderboard.txt";
 
-    loadLeaderboard(leaderboard, playerCount, filename);
+    loadLeaderboard(leaderboard, playerCount);
 
     while (true) {
-        system("cls");
+        clearScreen();
         displayMenu();
         printMenu(selected);
 
-        key = _getch();
-        if (key == 224) {
-            key = _getch();
-            if (key == 72) selected--;
-            if (key == 80) selected++; 
+        cout << "\nEnter option number (1-4) and press ENTER: ";
 
-            if (selected < 0) selected = 3;
-            if (selected > 3) selected = 0;
+        if (!(cin >> choice)) {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            continue;
         }
-        else if (key == 13) {
-            system("cls");
+
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+        selected = choice - 1;
+
+        if (selected >= 0 && selected <= 3) {
+            clearScreen();
             switch (selected) {
             case 0:
-                cout << "Starting game..." << endl;
-                cout << "\n[Game simulation - adding a score]\n\n";
-                addScore(leaderboard, playerCount);
-                saveLeaderboard(leaderboard, playerCount, filename);
+                startGame(leaderboard, playerCount);
                 break;
-            case 1:  
+            case 1:
                 displayLeaderboard(leaderboard, playerCount);
                 break;
-            case 2:  
+            case 2:
                 cout << "Opening settings..." << endl;
-                system("pause");
+                cout << "Press ENTER to return...";
+                cin.get();
                 break;
-            case 3: 
+            case 3:
                 cout << "Exiting..." << endl;
-                saveLeaderboard(leaderboard, playerCount, filename);
+                saveLeaderboard(leaderboard, playerCount);
                 return 0;
             }
+        }
+        else {
+            cout << "\nInvalid choice. Please enter a number from 1 to 4.\n";
+            cout << "Press ENTER to try again...";
+            cin.get();
         }
     }
 }
