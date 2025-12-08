@@ -199,3 +199,67 @@ inline void playNormalMode(Player leaderboard[], int& playerCount, const string&
     if (guess != HIDDEN_WORD) cout << "GAME OVER. Word was: " << HIDDEN_WORD << "\n";
     cout << "Press ENTER..."; clearInputBuffer(); cin.get();
 }
+
+inline void playHardMode(Player leaderboard[], int& playerCount, const string& playerName) {
+    vector<string> wordList = {
+        "JUPITER", "PROJECT", "LIBRARY", "MYSTERY", "KINGDOM",
+        "FREEDOM", "MONSTER", "CAPTAIN", "PICTURE", "MORNING",
+        "STATION", "NATURAL", "COMPLEX", "ELEMENT", "VERSION"
+    };
+    string HIDDEN_WORD = wordList[rand() % wordList.size()];
+
+    const int MAX_TRIES = 5;
+    string guess;
+    vector<bool> used_hidden(7, false);
+    int finalScore = 0;
+
+    clearScreen();
+    cout << "=================================\n";
+    cout << "   HARD MODE (7 Letters)\n";
+    cout << "=================================\n";
+    cout << "Attempts: " << MAX_TRIES << "\n";
+    cout << "Clues: [+] Correct, [*] Wrong place\n\n";
+
+    for (int attempt = 1; attempt <= MAX_TRIES; ++attempt) {
+        cout << "Attempt " << attempt << "/" << MAX_TRIES << ": ";
+        if (!(cin >> guess)) { clearInputBuffer(); attempt--; continue; }
+
+        transform(guess.begin(), guess.end(), guess.begin(), ::toupper);
+
+        if (guess.length() != 7) {
+            cout << "Invalid length! Use 7 letters.\n";
+            attempt--; continue;
+        }
+
+        string clue = "       ";
+        fill(used_hidden.begin(), used_hidden.end(), false);
+
+        for (int i = 0; i < 7; ++i) {
+            if (guess[i] == HIDDEN_WORD[i]) {
+                clue[i] = '+';
+                used_hidden[i] = true;
+            }
+        }
+
+        for (int i = 0; i < 7; ++i) {
+            if (clue[i] == ' ') {
+                for (int j = 0; j < 7; ++j) {
+                    if (guess[i] == HIDDEN_WORD[j] && !used_hidden[j]) {
+                        clue[i] = '*';
+                        used_hidden[j] = true;
+                        break;
+                    }
+                }
+            }
+        }
+        cout << "Result: " << clue << "\n\n";
+
+        if (guess == HIDDEN_WORD) {
+            finalScore = 700 - (attempt - 1) * 50;
+            cout << "WINNER! Score: " << finalScore << "\n";
+            break;
+        }
+    }
+    if (guess != HIDDEN_WORD) cout << "GAME OVER. Word was: " << HIDDEN_WORD << "\n";
+    cout << "Press ENTER..."; clearInputBuffer(); cin.get();
+}

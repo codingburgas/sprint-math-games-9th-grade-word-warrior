@@ -100,7 +100,7 @@ void startGame(Player leaderboard[], int& playerCount, const string& playerName)
         cout << "=================================\n\n";
         cout << "1. Easy   (3 Letters, 3 Tries)\n";
         cout << "2. Normal (5 Letters, 5 Tries)\n";
-        cout << "3. Hard   (Soon)\n";
+        cout << "3. Hard   (7 Letters, 5 Tries)\n";
         cout << "4. Back\n";
         cout << "\nSelect: ";
 
@@ -113,6 +113,10 @@ void startGame(Player leaderboard[], int& playerCount, const string& playerName)
         }
         else if (choice == 2) {
             playNormalMode(leaderboard, playerCount, playerName);
+            return;
+        }
+        else if (choice == 3) {
+            playHardMode(leaderboard, playerCount, playerName);
             return;
         }
         else if (choice == 4) return;
