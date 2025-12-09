@@ -1,9 +1,10 @@
-#include <iostream>
+﻿#include <iostream>
 #include <ctime>
 #include "GameLib.h" 
 
 using namespace std;
 
+//Показва лидерборда
 void displayLeaderboard(Player leaderboard[], int playerCount) {
     while (true) {
         clearScreen();
@@ -36,6 +37,7 @@ void displayLeaderboard(Player leaderboard[], int playerCount) {
     }
 }
 
+//Показва меню за настройки
 void displaySettingsMenu(Settings& settings) {
     while (true) {
         clearScreen();
@@ -92,6 +94,7 @@ void displaySettingsMenu(Settings& settings) {
     }
 }
 
+//Показва менюто за избор на режим
 void startGame(Player leaderboard[], int& playerCount, const string& playerName) {
     while (true) {
         clearScreen();
@@ -127,6 +130,7 @@ void startGame(Player leaderboard[], int& playerCount, const string& playerName)
     }
 }
 
+//Извежда логото на играта
 void showLogo() {
     cout << R"TITLE(
  __          __           _  __          __             _            
@@ -139,6 +143,7 @@ void showLogo() {
     cout << "\n=========================================\n\n";
 }
 
+//Основна функция
 int main() {
     srand(static_cast<unsigned int>(time(0)));
 

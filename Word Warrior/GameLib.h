@@ -26,15 +26,21 @@ const int MAX_PLAYERS = 10;
 const string FILENAME = "leaderboard.txt";
 const string SETTINGS_FILE = "settings.txt";
 
+
+
+//Изчиства екрана
 inline void clearScreen() {
     system("cls");
 }
 
+//Изчиства буфера на входа
 inline void clearInputBuffer() {
     cin.clear();
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 }
 
+
+//Зарежда списъка с играчи и резултати от файл
 inline void loadLeaderboard(Player leaderboard[], int& playerCount) {
     ifstream file(FILENAME);
     playerCount = 0;
@@ -46,6 +52,7 @@ inline void loadLeaderboard(Player leaderboard[], int& playerCount) {
     }
 }
 
+//Сортира таблицата
 inline void sortLeaderboard(Player leaderboard[], int playerCount) {
     for (int i = 0; i < playerCount - 1; i++) {
         for (int j = 0; j < playerCount - i - 1; j++) {
@@ -58,6 +65,8 @@ inline void sortLeaderboard(Player leaderboard[], int playerCount) {
     }
 }
 
+
+//Зарежда настройките от файл
 inline void loadSettings(Settings& settings) {
     ifstream file(SETTINGS_FILE);
     settings.soundEnabled = true;
@@ -70,9 +79,10 @@ inline void loadSettings(Settings& settings) {
         file.ignore();
         getline(file, settings.theme);
         file.close();
-    }
+    }с
 }
 
+//Запазва настройки във файлa
 inline void saveSettings(const Settings& settings) {
     ofstream file(SETTINGS_FILE);
     if (file.is_open()) {
@@ -82,6 +92,7 @@ inline void saveSettings(const Settings& settings) {
     }
 }
 
+//Лесен режим, дума от 3 букви и 3 опита
 inline void playEasyMode(Player leaderboard[], int& playerCount, const string& playerName) {
     vector<string> wordList = { "CAT", "DOG", "SUN", "CAR", "BUS", "SKY", "FOX", "BOX", "HAT", "CUP" };
     string HIDDEN_WORD = wordList[rand() % wordList.size()];
@@ -136,6 +147,7 @@ inline void playEasyMode(Player leaderboard[], int& playerCount, const string& p
     cout << "Press ENTER..."; clearInputBuffer(); cin.get();
 }
 
+//Нормален режим, дума от 5 букви и 5 опита
 inline void playNormalMode(Player leaderboard[], int& playerCount, const string& playerName) {
     vector<string> wordList = {
         "APPLE", "TABLE", "CHAIR", "HOUSE", "MOUSE",
@@ -200,6 +212,7 @@ inline void playNormalMode(Player leaderboard[], int& playerCount, const string&
     cout << "Press ENTER..."; clearInputBuffer(); cin.get();
 }
 
+//Сложен режим, дума от 7 букви и 5 опита
 inline void playHardMode(Player leaderboard[], int& playerCount, const string& playerName) {
     vector<string> wordList = {
         "JUPITER", "PROJECT", "LIBRARY", "MYSTERY", "KINGDOM",
